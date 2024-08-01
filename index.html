@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chúc mừng tốt nghiệp</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f8f9fa;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .celebrate-container {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .celebrate-message {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ff6b6b;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 70px;
+      background-color: #ff6b6b;
+      border-radius: 50% 50% 0 0;
+      transform: rotate(-45deg);
+      animation: float 5s ease-in-out infinite, drift 10s linear infinite;
+    }
+
+    .balloon:before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background-color: #ff6b6b;
+      transform: translateX(-50%);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(-45deg);
+      }
+      100% {
+        transform: translateY(0) rotate(-45deg);
+      }
+    }
+
+    @keyframes drift {
+      0% {
+        left: 0;
+      }
+      100% {
+        left: 100vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="celebrate-container">
+  <div class="celebrate-message">Chúc mừng cậu đã tốt nghiệp!</div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  function createBalloons() {
+    const balloonsCount = 30;
+    for (let i = 0; i < balloonsCount; i++) {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = `${Math.random() * 100}vw`;
+      balloon.style.bottom = `${Math.random() * 100}vh`;
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      balloon.style.animationDelay = `${Math.random() * 10}s`;
+      document.body.appendChild(balloon);
+    }
+  }
+
+  createBalloons();
+</script>
+</body>
+</html>
